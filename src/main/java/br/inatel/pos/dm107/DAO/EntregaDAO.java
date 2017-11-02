@@ -30,7 +30,7 @@ public class EntregaDAO {
 
 	public static List<Entrega> recuperarTodasEntregas() {
 		ArrayList<Entrega> entregas = new ArrayList<>();
-		String sql = "SELECT numeroPedido, idCliente, nomeRecebedor, cpfRecebedor, dataRecebimento FROM entrega;";
+		String sql = "SELECT numeroPedido, idCliente, nomeRecebedor, cpfRecebedor, dataEntrega FROM entrega;";
 
 		try (Connection conexao = Conexao.abrirConexao(); PreparedStatement statement = conexao.prepareStatement(sql)) {
 
@@ -40,14 +40,14 @@ public class EntregaDAO {
 					Long idCliente = rs.getLong("idCliente");
 					String nomeRecebedor = rs.getString("nomeRecebedor");
 					String cpfRecebedor = rs.getString("cpfRecebedor");
-					Timestamp dataTimestamp = ((Timestamp) rs.getObject("dataRecebimento"));
+					Timestamp dataTimestamp = ((Timestamp) rs.getObject("dataEntrega"));
 
-					LocalDateTime dataRecebimento = null;
+					LocalDateTime dataEntrega = null;
 					if (dataTimestamp != null) {
-						dataRecebimento = dataTimestamp.toLocalDateTime();
+						dataEntrega = dataTimestamp.toLocalDateTime();
 					}
 
-					Entrega entrega = new Entrega(numeroPedido, idCliente, nomeRecebedor, cpfRecebedor, dataRecebimento);
+					Entrega entrega = new Entrega(numeroPedido, idCliente, nomeRecebedor, cpfRecebedor, dataEntrega);
 					entregas.add(entrega);
 				}
 			}
@@ -71,14 +71,14 @@ public class EntregaDAO {
 					Long idCliente = rs.getLong("idCliente");
 					String nomeRecebedor = rs.getString("nomeRecebedor");
 					String cpfRecebedor = rs.getString("cpfRecebedor");
-					Timestamp dataTimestamp = ((Timestamp) rs.getObject("dataRecebimento"));
+					Timestamp dataTimestamp = ((Timestamp) rs.getObject("dataEntrega"));
 
-					LocalDateTime dataRecebimento = null;
+					LocalDateTime dataEntrega = null;
 					if (dataTimestamp != null) {
-						dataRecebimento = dataTimestamp.toLocalDateTime();
+						dataEntrega = dataTimestamp.toLocalDateTime();
 					}
 					
-					entrega = new Entrega(numeroPedido, idCliente, nomeRecebedor, cpfRecebedor, dataRecebimento);
+					entrega = new Entrega(numeroPedido, idCliente, nomeRecebedor, cpfRecebedor, dataEntrega);
 				}
 			}
 		} catch (Exception ex) {

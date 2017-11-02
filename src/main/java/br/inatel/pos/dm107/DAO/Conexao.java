@@ -10,9 +10,9 @@ public class Conexao {
 	private Conexao() {
 	}
 
-	private static final String URL = "jdbc:mysql://localhost/logisticadb?useSSL=false";
+	private static final String URL = "jdbc:mysql://localhost/dm107?useSSL=false";
 	private static final String USUARIO = "root";
-	private static final String SENHA = "root";
+	private static final String SENHA = "";
 
 	public static Connection abrirConexao() {
 

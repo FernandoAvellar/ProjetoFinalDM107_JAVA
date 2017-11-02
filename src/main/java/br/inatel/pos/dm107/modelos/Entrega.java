@@ -18,7 +18,7 @@ public class Entrega {
 	private String nomeRecebedor;
 	private String cpfRecebedor;
 	@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-	private LocalDateTime dataRecebimento;
+	private LocalDateTime dataEntrega;
 
 	public Entrega() {
 	}
@@ -33,7 +33,7 @@ public class Entrega {
 		this.idCliente = idCliente;
 		this.nomeRecebedor = nomeRecebedor;
 		this.cpfRecebedor = cpfRecebedor;
-		this.dataRecebimento = data;
+		this.dataEntrega = data;
 	}
 
 	public Long getNumeroPedido() {
@@ -69,10 +69,10 @@ public class Entrega {
 	}
 
 	public LocalDateTime getData() {
-		return dataRecebimento;
+		return dataEntrega;
 	}
 
 	public void setData(LocalDateTime data) {
-		this.dataRecebimento = data;
+		this.dataEntrega = data;
 	}
 }
